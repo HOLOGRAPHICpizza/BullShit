@@ -38,10 +38,13 @@ public class BullShit {
 			// does the file exist?
 			if(configFilePath.exists()) {
 				// load it
+				System.out.println("Loading configuration file.");
 				configuration.load(new FileInputStream(configFilePath));
 			}
 			else {
 				// create defaults
+				System.out.println("Making defaulut config file.");
+				
 				configuration.setProperty("port", "1337");
 				configuration.setProperty("name", "Super Awesome Server");
 				
@@ -61,6 +64,7 @@ public class BullShit {
 		server.start();
 		try {
 			server.bind(Integer.parseInt(configuration.getProperty("port")));
+			System.out.println("Server running on port " + configuration.getProperty("port") + ".");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
